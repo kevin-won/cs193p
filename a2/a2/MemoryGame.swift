@@ -1,9 +1,8 @@
 //
 //  MemoryGame.swift
-//  Memorize
+//  a2
 //
-//  Created by Kevin Won on 6/13/22.
-//  This is our model.
+//  Created by Kevin Won on 6/15/22.
 
 import Foundation
 
@@ -39,6 +38,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: pairIndex * 2))
             cards.append(Card(content: content, id: pairIndex*2 + 1))
         }
+        cards = cards.shuffled()
     }
     
     struct Card: Identifiable {
@@ -49,3 +49,18 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
 }
 
+struct Theme {
+    var name: String
+    var emojis: Array<String>
+    var numberOfPairsOfCards: Int
+    var color: String
+}
+
+let themes = [
+    Theme(name: "Vehicles", emojis: ["🚝", "🚛", "🏍", "🛩", "✈️", "🚒", "🛴", "🚑", "🚂"], numberOfPairsOfCards: 9, color: "blue"),
+    Theme(name: "Animals", emojis: ["🐎", "🦕", "🐊", "🐳", "🦖", "🐿", "🦙", "🐃", "🐶"], numberOfPairsOfCards: 7, color: "red"),
+    Theme(name: "Faces", emojis: ["😤", "😃", "😇", "🙃", "😂", "😧", "🤥", "🥹", "🥰", "🥸"], numberOfPairsOfCards: 5, color: "green"),
+    Theme(name: "Food", emojis: ["🍏", "🫐", "🍑", "🍌", "🍉", "🍐", "🍔", "🥨", "🍠", "🍇", "🫑", "🍓", "🌭" ], numberOfPairsOfCards: 12, color: "orange"),
+    Theme(name: "Hearts", emojis: ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤎", "💖", "❣️", "❤️‍🩹"], numberOfPairsOfCards: 9, color: "purple"),
+    Theme(name: "Numbers", emojis: ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"], numberOfPairsOfCards: 3, color: "yellow")
+    ]

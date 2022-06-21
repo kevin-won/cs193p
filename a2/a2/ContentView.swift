@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Memorize
+//  a2
 //
-//  Created by Kevin Won on 6/12/22.
+//  Created by Kevin Won on 6/15/22.
 //
 
 import SwiftUI
@@ -12,6 +12,9 @@ struct ContentView: View {
     
     var body: some View {
         ScrollView {
+            Text(viewModel.theme.name)
+                .font(.largeTitle)
+                .foregroundColor(viewModel.color(for: viewModel.theme))
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                 ForEach(viewModel.cards) { card in CardView(card: card)
                         .aspectRatio(2/3, contentMode: .fit)
@@ -20,12 +23,17 @@ struct ContentView: View {
                         }
                 }
             }
+            Button(action: viewModel.newGame, label: {
+                Text("New Game")
+                    .font(.largeTitle)
+            })
         }
         .foregroundColor(.red)
         .padding(.horizontal)
+        
     }
-    
 }
+
 
 struct CardView: View {
     let card: MemoryGame<String>.Card
