@@ -7,18 +7,13 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-//    static let vehicleEmojis = ["🚝", "🚛", "🏍", "🛩", "✈️", "🚒", "🛴", "🚑", "🚂"]
-//    static let animalEmojis = ["🐎", "🦕", "🐊", "🐳", "🦖", "🐿", "🦙", "🐃", "🐶"]
-//    static let faceEmojis = ["😤", "😃", "😇", "🙃", "😂", "😧", "🤥", "🥹", "🥰", "🥸"]
-//    static let foodEmojis = ["🍏", "🫐", "🍑", "🍌", "🍉", "🍐", "🍔", "🥨", "🍠", "🍇", "🫑", "🍓", "🌭" ]
-//    static let heartEmojis = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤎", "💖", "❣️", "❤️‍🩹"]
-//    static let numberEmojis = ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"]
-        
+    
     var theme = themes.randomElement()!
     
     static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         let emojis = theme.emojis.shuffled()
-        return MemoryGame<String>(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
+        let num = emojis.count < theme.numberOfPairsOfCards ? emojis.count : theme.numberOfPairsOfCards
+        return MemoryGame<String>(numberOfPairsOfCards: num) { pairIndex in
             emojis[pairIndex]
        }
     }
@@ -51,6 +46,10 @@ class EmojiMemoryGame: ObservableObject {
         default:
             return Color.white
         }
+    }
+    
+    func getScore() -> Int {
+        return model.score
     }
     
     func newGame() {

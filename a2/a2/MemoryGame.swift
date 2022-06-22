@@ -11,6 +11,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     private var indexOfTheOneAndOnlyFaceUpCard : Int?
     
+    var score = 0
+    
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where : { $0.id == card.id }),
            !cards[chosenIndex].isFaceUp,
@@ -19,6 +21,16 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
+                    score += 2
+                } else {
+                    if cards[chosenIndex].wasFaceUp {
+                        score -= 1
+                    }
+                    if cards[potentialMatchIndex].wasFaceUp {
+                        score -= 1
+                    }
+                    cards[chosenIndex].wasFaceUp = true
+                    cards[potentialMatchIndex].wasFaceUp = true
                 }
                 indexOfTheOneAndOnlyFaceUpCard = nil
             } else {
@@ -46,6 +58,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         var isMatched: Bool = false
         var content: CardContent
         var id: Int
+        var wasFaceUp: Bool = false
     }
 }
 
@@ -62,5 +75,5 @@ let themes = [
     Theme(name: "Faces", emojis: ["😤", "😃", "😇", "🙃", "😂", "😧", "🤥", "🥹", "🥰", "🥸"], numberOfPairsOfCards: 5, color: "green"),
     Theme(name: "Food", emojis: ["🍏", "🫐", "🍑", "🍌", "🍉", "🍐", "🍔", "🥨", "🍠", "🍇", "🫑", "🍓", "🌭" ], numberOfPairsOfCards: 12, color: "orange"),
     Theme(name: "Hearts", emojis: ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤎", "💖", "❣️", "❤️‍🩹"], numberOfPairsOfCards: 9, color: "purple"),
-    Theme(name: "Numbers", emojis: ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"], numberOfPairsOfCards: 3, color: "yellow")
+    Theme(name: "Numbers", emojis: ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"], numberOfPairsOfCards: 43, color: "yellow")
     ]

@@ -23,6 +23,8 @@ struct ContentView: View {
                         }
                 }
             }
+            Text(String(viewModel.getScore()))
+                .font(.largeTitle)
             Button(action: viewModel.newGame, label: {
                 Text("New Game")
                     .font(.largeTitle)
