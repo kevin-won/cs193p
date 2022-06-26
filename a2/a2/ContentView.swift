@@ -15,7 +15,7 @@ struct ContentView: View {
             Text(viewModel.theme.name)
                 .font(.largeTitle)
                 .foregroundColor(viewModel.color(for: viewModel.theme))
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 140))]) {
                 ForEach(viewModel.cards) { card in CardView(card: card)
                         .aspectRatio(2/3, contentMode: .fit)
                         .onTapGesture {

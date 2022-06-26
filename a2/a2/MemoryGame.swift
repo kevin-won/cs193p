@@ -73,7 +73,7 @@ let themes = [
     Theme(name: "Vehicles", emojis: ["🚝", "🚛", "🏍", "🛩", "✈️", "🚒", "🛴", "🚑", "🚂"], numberOfPairsOfCards: 9, color: "blue"),
     Theme(name: "Animals", emojis: ["🐎", "🦕", "🐊", "🐳", "🦖", "🐿", "🦙", "🐃", "🐶"], numberOfPairsOfCards: 7, color: "red"),
     Theme(name: "Faces", emojis: ["😤", "😃", "😇", "🙃", "😂", "😧", "🤥", "🥹", "🥰", "🥸"], numberOfPairsOfCards: 5, color: "green"),
-    Theme(name: "Food", emojis: ["🍏", "🫐", "🍑", "🍌", "🍉", "🍐", "🍔", "🥨", "🍠", "🍇", "🫑", "🍓", "🌭" ], numberOfPairsOfCards: 12, color: "orange"),
+    Theme(name: "Food", emojis: ["🍏", "🫐", "🍗", "🍌", "🍉", "🥩", "🍔", "🥨", "🍠", "🍇", "🫑", "🍓", "🌭", "🍙", "🍣", "🍩", "🍳" ], numberOfPairsOfCards: 17, color: "orange"),
     Theme(name: "Hearts", emojis: ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤎", "💖", "❣️", "❤️‍🩹"], numberOfPairsOfCards: 9, color: "purple"),
     Theme(name: "Numbers", emojis: ["0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"], numberOfPairsOfCards: 43, color: "yellow")
     ]
