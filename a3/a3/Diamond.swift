@@ -8,33 +8,24 @@
 import SwiftUI
 
 struct Diamond: Shape {
-    var startAngle: Angle = Angle(degrees: 0-90)
-    var endAngle: Angle = Angle(degrees: 0-190)
-    var clockwise: Bool = false
     
     func path(in rect: CGRect) -> Path {
         
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        let radius = min(rect.width, rect.height) / 2
-        let start = CGPoint(
-            x: center.x + radius * CGFloat(cos(startAngle.radians)),
-            y: center.y + radius * CGFloat(sin(startAngle.radians))
-        )
-        
+        let bottom = CGPoint(x: rect.midX, y: rect.minY)
+        let right = CGPoint(x: rect.maxX, y: rect.midY)
+        let top = CGPoint(x: rect.midX, y: rect.maxY)
+        let left = CGPoint(x: rect.minX, y: rect.midY)
+
         var p = Path()
-        p.move(to: center)
-        p.addLine(to: start)
-        p.addArc(
-            center: center,
-            radius: radius,
-            startAngle: startAngle,
-            endAngle: endAngle,
-            clockwise: !clockwise
-        )
-        p.addLine(to: center)
-    
+        p.move(to: bottom)
+        p.addLine(to: right)
+        p.addLine(to: top)
+        p.addLine(to: left)
+        p.addLine(to: bottom)
+        
         return p
     }
 }
+
 
 

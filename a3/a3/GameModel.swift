@@ -30,10 +30,15 @@ struct GameModel {
             cards[chosenIndex].isSelected = true
             arrayOfIndicesOfSelectedCards.append(chosenIndex)
             if arrayOfIndicesOfSelectedCards.count == 3 {
-                arrayOfIndicesOfSelectedCards.append(chosenIndex)
                 var cardsInPotentialSet = [Card]()
+                for index in cards.indices {
+                    if arrayOfIndicesOfSelectedCards.contains(index) {
+                        cardsInPotentialSet.append(cards[index])
+                    }
+                }
                 if setIsValid(for: cardsInPotentialSet) {
                     var count = 0
+                    cardsOnScreen = []
                     for index in cards.indices {
                         if arrayOfIndicesOfSelectedCards.contains(index) {
                             cards[index].isDone = true
@@ -58,10 +63,10 @@ struct GameModel {
     }
     
     private func setIsValid(for cards: [Card]) -> Bool {
-        return colorsAreValid(for: cards)
+        return colorIsValid(for: cards) && quantityIsValid(for: cards) && shapeIsValid(for: cards) && fillingIsValid(for: cards)
     }
     
-    private func colorsAreValid(for cards: [Card]) -> Bool {
+    private func colorIsValid(for cards: [Card]) -> Bool {
         var red = 0
         var green = 0
         var blue = 0
@@ -72,6 +77,59 @@ struct GameModel {
                 case ContentColor.green:
                     green += 1
                 case ContentColor.purple:
+                    blue += 1
+            }
+        }
+        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
+    }
+    
+    private func quantityIsValid(for cards: [Card]) -> Bool {
+        var red = 0
+        var green = 0
+        var blue = 0
+        for index in cards.indices {
+            switch cards[index].number {
+                case 1:
+                    red += 1
+                case 2:
+                    green += 1
+                case 3:
+                    blue += 1
+                default:
+                    blue += 0
+            }
+        }
+        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
+    }
+    
+    private func shapeIsValid(for cards: [Card]) -> Bool {
+        var red = 0
+        var green = 0
+        var blue = 0
+        for index in cards.indices {
+            switch cards[index].shape {
+                case ContentShape.circle:
+                    red += 1
+                case ContentShape.rectangle:
+                    green += 1
+                case ContentShape.diamond:
+                    blue += 1
+            }
+        }
+        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
+    }
+    
+    private func fillingIsValid(for cards: [Card]) -> Bool {
+        var red = 0
+        var green = 0
+        var blue = 0
+        for index in cards.indices {
+            switch cards[index].filling {
+                case ContentFilling.empty:
+                    red += 1
+                case ContentFilling.full:
+                    green += 1
+                case ContentFilling.squiggly:
                     blue += 1
             }
         }

@@ -35,7 +35,6 @@ struct CardView: View {
                 shape.fill().foregroundColor(.white)
                 shape.stroke(lineWidth: DrawingConstants.lineWidth)
                 viewModel.symbol(for: card)
-                .foregroundColor(viewModel.color(for: card))
                 .padding(.all)
             }
         }

@@ -37,8 +37,8 @@ class GameViewModel: ObservableObject {
     
     func symbol(for card: Card) -> some View {
         VStack {
-            ForEach(0..<card.number) { _ in
-                self.createSymbol(for: card)
+            ForEach(0..<card.number, id: \.self) { _ in
+                self.createSymbol(for: card).foregroundColor(self.color(for: card))
             }
         }
     }
@@ -47,30 +47,26 @@ class GameViewModel: ObservableObject {
     func createSymbol(for card: Card) -> some View {
         switch card.shape {
         case .rectangle:
-            Rectangle()
+            createSymbolHelper(for: card, with: Rectangle())
         case .circle:
-            Circle()
+            createSymbolHelper(for: card, with: Circle())
         case .diamond:
-            Diamond()
+            createSymbolHelper(for: card, with: Diamond())
         }
     }
-//
-//    @ViewBuilder
-//    private func createSymbolHelper(for card: Card, with shape: Shape) -> some View {
-//        switch card.filling {
-//        case .empty:
-//            shape.fill().foregroundColor(.white)
-//            shape.stroke(lineWidth: 10.0)
-//        case .full:
-//            shape.fill().foregroundColor(.white)
-//            shape.stroke(lineWidth: 10.0)
-//        case .squiggly:
-//            shape.fill().foregroundColor(.white)
-//            shape.stroke(lineWidth: 10.0)
-//
-//        }
-//    }
-    
 
-    
+    @ViewBuilder
+    private func createSymbolHelper<SymbolShape>(for card: Card, with shape: SymbolShape) -> some View where SymbolShape: Shape {
+        switch card.filling {
+            case .empty:
+                ZStack {
+                    shape.fill().foregroundColor(.white).padding()
+                    shape.stroke(lineWidth: 3.0)
+                }
+            case .full:
+                shape.fill().foregroundColor(color(for: card))
+            case .squiggly:
+                shape.opacity(0.3)
+        }
+    }
 }
