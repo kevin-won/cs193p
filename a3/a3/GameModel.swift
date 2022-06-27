@@ -10,28 +10,49 @@ import Foundation
 struct GameModel {
     
     private(set) var cards: Array<Card>
+    
+    private(set) var cardsOnScreen: Array<Card>
+    
+    private var numberOfCardsOnScreen = 12
 
-    private var indexOfSelectedCards: [Int]? = []
+    private var arrayOfIndicesOfSelectedCards: [Int] = []
     
-    private static var colors = [Color.red, Color.green, Color.purple]
+    private static var colors = [ContentColor.red, ContentColor.green, ContentColor.purple]
     
-    private static var shapes = [Shape.rectangle, Shape.oval, Shape.diamond]
+    private static var shapes = [ContentShape.rectangle, ContentShape.circle, ContentShape.diamond]
     
-    private static var fillings = [Filling.empty, Filling.full, Filling.squiggly]
+    private static var fillings = [ContentFilling.empty, ContentFilling.full, ContentFilling.squiggly]
     
     private static var numbers = [1, 2, 3]
-    
-    
+        
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) {
-            if let unwrappedIndexOfSelectedCards = indexOfSelectedCards {
-                cards[chosenIndex].isSelected = true
-                if unwrappedIndexOfSelectedCards.count == 0, unwrappedIndexOfSelectedCards.count == 1 {
-                    indexOfSelectedCards!.append(chosenIndex)
+            cards[chosenIndex].isSelected = true
+            arrayOfIndicesOfSelectedCards.append(chosenIndex)
+            if arrayOfIndicesOfSelectedCards.count == 3 {
+                arrayOfIndicesOfSelectedCards.append(chosenIndex)
+                var cardsInPotentialSet = [Card]()
+                if setIsValid(for: cardsInPotentialSet) {
+                    var count = 0
+                    for index in cards.indices {
+                        if arrayOfIndicesOfSelectedCards.contains(index) {
+                            cards[index].isDone = true
+                            cards[index].isSelected = false
+                        }
+                        if !cards[index].isDone && count != numberOfCardsOnScreen {
+                            count += 1
+                            cardsOnScreen.append(cards[index])
+                        }
+                    }
+                } else {
+                    for index in cards.indices {
+                        if arrayOfIndicesOfSelectedCards.contains(index) {
+                            cards[index].isSelected = false
+                        }
+                    }
                 }
-                else if unwrappedIndexOfSelectedCards.count == 2 {
-                    cards[chose]
-                }
+                cardsInPotentialSet = []
+                arrayOfIndicesOfSelectedCards = []
             }
         }
     }
@@ -46,11 +67,11 @@ struct GameModel {
         var blue = 0
         for index in cards.indices {
             switch cards[index].color {
-                case Color.red:
+                case ContentColor.red:
                     red += 1
-                case Color.green:
+                case ContentColor.green:
                     green += 1
-                case Color.purple:
+                case ContentColor.purple:
                     blue += 1
             }
         }
@@ -75,30 +96,31 @@ struct GameModel {
             }
         }
         cards = cards.shuffled()
+        cardsOnScreen = Array(cards.prefix(numberOfCardsOnScreen))
     }
     
-    enum Color {
+    enum ContentColor {
         case red
         case green
         case purple
     }
     
-    enum Shape {
+    enum ContentShape {
         case rectangle
-        case oval
+        case circle
         case diamond
     }
     
-    enum Filling {
+    enum ContentFilling {
         case empty
         case full
         case squiggly
     }
     
     struct Card: Identifiable {
-        var color: Color
-        var shape: Shape
-        var filling: Filling
+        var color: ContentColor
+        var shape: ContentShape
+        var filling: ContentFilling
         var number: Int
         var id: Int
         var isSelected = false

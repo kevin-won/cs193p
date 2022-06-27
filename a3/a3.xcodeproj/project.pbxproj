@@ -13,6 +13,8 @@
 		CDCD90FD28678859005FAEDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD90FC28678859005FAEDC /* Preview Assets.xcassets */; };
 		CDCD910428679526005FAEDC /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD910328679526005FAEDC /* GameModel.swift */; };
 		CDCD91062867991C005FAEDC /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD91052867991C005FAEDC /* GameViewModel.swift */; };
+		CDCD91082868E3F1005FAEDC /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD91072868E3F1005FAEDC /* AspectVGrid.swift */; };
+		CDCD910C2868E860005FAEDC /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD910B2868E860005FAEDC /* Diamond.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		CDCD90FC28678859005FAEDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDCD910328679526005FAEDC /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		CDCD91052867991C005FAEDC /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		CDCD91072868E3F1005FAEDC /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		CDCD910B2868E860005FAEDC /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				CDCD90F728678854005FAEDC /* ContentView.swift */,
 				CDCD910328679526005FAEDC /* GameModel.swift */,
 				CDCD91052867991C005FAEDC /* GameViewModel.swift */,
+				CDCD910B2868E860005FAEDC /* Diamond.swift */,
+				CDCD91072868E3F1005FAEDC /* AspectVGrid.swift */,
 				CDCD90F928678859005FAEDC /* Assets.xcassets */,
 				CDCD90FB28678859005FAEDC /* Preview Content */,
 			);
@@ -143,9 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDCD910C2868E860005FAEDC /* Diamond.swift in Sources */,
 				CDCD91062867991C005FAEDC /* GameViewModel.swift in Sources */,
 				CDCD90F828678854005FAEDC /* ContentView.swift in Sources */,
 				CDCD910428679526005FAEDC /* GameModel.swift in Sources */,
+				CDCD91082868E3F1005FAEDC /* AspectVGrid.swift in Sources */,
 				CDCD90F628678854005FAEDC /* a3App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

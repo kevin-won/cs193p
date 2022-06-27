@@ -1,15 +1,15 @@
 //
-//  Pie.swift
-//  Memorize
+//  Diamond.swift
+//  a3
 //
-//  Created by Kevin Won on 6/23/22.
+//  Created by Kevin Won on 6/26/22.
 //
 
 import SwiftUI
 
-struct Pie: Shape {
-    var startAngle: Angle
-    var endAngle: Angle
+struct Diamond: Shape {
+    var startAngle: Angle = Angle(degrees: 0-90)
+    var endAngle: Angle = Angle(degrees: 0-190)
     var clockwise: Bool = false
     
     func path(in rect: CGRect) -> Path {
@@ -36,3 +36,5 @@ struct Pie: Shape {
         return p
     }
 }
+
+
