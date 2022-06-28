@@ -3,7 +3,7 @@
 //  Memorize
 //
 //  Created by Kevin Won on 6/13/22.
-//  This is the model-view.
+//  
 
 import SwiftUI
 
@@ -31,5 +31,9 @@ class EmojiMemoryGame: ObservableObject {
     
     func shuffle() {
         model.shuffle()
+    }
+    
+    func restart() {
+        model = EmojiMemoryGame.createMemoryGame()
     }
 }
