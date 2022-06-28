@@ -24,6 +24,17 @@ class GameViewModel: ObservableObject {
         model.choose(card)
     }
     
+    func borderColor(for card: Card) -> Color {
+        switch card.isSelected {
+        case true:
+            print("he")
+            return Color.red
+        case false:
+            print("jjj")
+            return Color.black
+        }
+    }
+    
     func color(for card: Card) -> Color {
         switch card.color {
         case .red:

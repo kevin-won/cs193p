@@ -26,14 +26,14 @@ struct GameModel {
     private static var numbers = [1, 2, 3]
         
     mutating func choose(_ card: Card) {
-        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) {
-            cards[chosenIndex].isSelected = true
+        if let chosenIndex = cardsOnScreen.firstIndex(where: { $0.id == card.id }) {
+            cardsOnScreen[chosenIndex].isSelected = true
             arrayOfIndicesOfSelectedCards.append(chosenIndex)
             if arrayOfIndicesOfSelectedCards.count == 3 {
                 var cardsInPotentialSet = [Card]()
-                for index in cards.indices {
+                for index in cardsOnScreen.indices {
                     if arrayOfIndicesOfSelectedCards.contains(index) {
-                        cardsInPotentialSet.append(cards[index])
+                        cardsInPotentialSet.append(cardsOnScreen[index])
                     }
                 }
                 if setIsValid(for: cardsInPotentialSet) {
@@ -52,7 +52,7 @@ struct GameModel {
                 } else {
                     for index in cards.indices {
                         if arrayOfIndicesOfSelectedCards.contains(index) {
-                            cards[index].isSelected = false
+                            cardsOnScreen[index].isSelected = false
                         }
                     }
                 }
