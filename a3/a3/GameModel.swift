@@ -16,7 +16,7 @@ struct GameModel {
             
     private var numberOfCardsOnScreen = 12
     
-     var indexOfNextCardToDeal = 12
+    private var indexOfNextCardToDeal = 12
     
     private var numberOfUnmatchedCardsAvailable = 81
         
@@ -29,6 +29,10 @@ struct GameModel {
     private static var fillings = [ContentFilling.empty, ContentFilling.full, ContentFilling.striped]
     
     private static var numbers = [1, 2, 3]
+    
+    func getIndexOfNextCardToDeal() -> Int {
+        indexOfNextCardToDeal
+    }
     
     mutating func resetCards() {
         if !playingCards.first(where: { $0 == selectedCards.first })!.isMatched! {

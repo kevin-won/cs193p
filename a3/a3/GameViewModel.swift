@@ -54,10 +54,6 @@ class GameViewModel: ObservableObject {
     
     @ViewBuilder
     func createSymbol(for card: Card) -> some View {
-        if let unwrappedBool = card.isMatched {
-            if !unwrappedBool { RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius).foregroundColor(.black)}
-            else {Circle().foregroundColor(.white) }
-        } else {
         switch card.shape {
             case .squiggly:
                 createSymbolHelper(for: card, with: Squiggly())
@@ -65,19 +61,7 @@ class GameViewModel: ObservableObject {
                 createSymbolHelper(for: card, with: Circle())
             case .diamond:
                 createSymbolHelper(for: card, with: Diamond())
-            }
         }
-    }
-    
-    func cover(for card: Card) -> Color {
-        if let unwrappedBoolean = card.isMatched {
-            if unwrappedBoolean {
-                return Color.green
-            } else {
-                return Color.black
-            }
-        }
-        return Color.white.opacity(0)
     }
 
     @ViewBuilder
@@ -95,8 +79,19 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    func cover(for card: Card) -> Color {
+        if let unwrappedBoolean = card.isMatched {
+            if unwrappedBoolean {
+                return Color.green
+            } else {
+                return Color.black
+            }
+        }
+        return Color.white.opacity(0)
+    }
+    
     func opacityOfDealButton() -> Double {
-        if model.indexOfNextCardToDeal == 81 { return 0 }
+        if model.getIndexOfNextCardToDeal() == 81 { return 0 }
         else { return 1 }
     }
     
