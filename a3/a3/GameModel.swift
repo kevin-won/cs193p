@@ -6,139 +6,104 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct GameModel {
     
     private(set) var cards: Array<Card>
     
-    private(set) var cardsOnScreen: Array<Card>
-    
+    private(set) var playingCards: Array<Card>
+            
     private var numberOfCardsOnScreen = 12
-
-    private var arrayOfIndicesOfSelectedCards: [Int] = []
+    
+     var indexOfNextCardToDeal = 12
+    
+    private var numberOfUnmatchedCardsAvailable = 81
+        
+    private var selectedCards: Array<Card> = []
     
     private static var colors = [ContentColor.red, ContentColor.green, ContentColor.purple]
     
-    private static var shapes = [ContentShape.rectangle, ContentShape.circle, ContentShape.diamond]
+    private static var shapes = [ContentShape.squiggly, ContentShape.circle, ContentShape.diamond]
     
-    private static var fillings = [ContentFilling.empty, ContentFilling.full, ContentFilling.squiggly]
+    private static var fillings = [ContentFilling.empty, ContentFilling.full, ContentFilling.striped]
     
     private static var numbers = [1, 2, 3]
-        
+    
+    mutating func resetCards() {
+        if !playingCards.first(where: { $0 == selectedCards.first })!.isMatched! {
+            selectedCards.forEach { card in
+                let unmatchedIndex = playingCards.firstIndex(of: card)!
+                playingCards[unmatchedIndex].isMatched = nil
+            }
+        } else {
+            selectedCards.forEach { card in
+                let matchedIndex = playingCards.firstIndex(of: card)!
+                dealOneCard(at: matchedIndex)
+            }
+        }
+        selectedCards = []
+    }
+    
+    mutating func dealOneCard(at matchedIndex: Int) {
+        if indexOfNextCardToDeal < 81 {
+            playingCards[matchedIndex] = cards[indexOfNextCardToDeal]
+            indexOfNextCardToDeal += 1
+        } else { playingCards.remove(at: matchedIndex) }
+    }
+    
     mutating func choose(_ card: Card) {
-        if let chosenIndex = cardsOnScreen.firstIndex(where: { $0.id == card.id }) {
-            cardsOnScreen[chosenIndex].isSelected = true
-            arrayOfIndicesOfSelectedCards.append(chosenIndex)
-            if arrayOfIndicesOfSelectedCards.count == 3 {
-                var cardsInPotentialSet = [Card]()
-                for index in cardsOnScreen.indices {
-                    if arrayOfIndicesOfSelectedCards.contains(index) {
-                        cardsInPotentialSet.append(cardsOnScreen[index])
-                    }
-                }
-                if setIsValid(for: cardsInPotentialSet) {
-                    var count = 0
-                    cardsOnScreen = []
-                    for index in cards.indices {
-                        if arrayOfIndicesOfSelectedCards.contains(index) {
-                            cards[index].isDone = true
-                            cards[index].isSelected = false
-                        }
-                        if !cards[index].isDone && count != numberOfCardsOnScreen {
-                            count += 1
-                            cardsOnScreen.append(cards[index])
-                        }
-                    }
-                } else {
-                    for index in cards.indices {
-                        if arrayOfIndicesOfSelectedCards.contains(index) {
-                            cardsOnScreen[index].isSelected = false
-                        }
-                    }
-                }
-                cardsInPotentialSet = []
-                arrayOfIndicesOfSelectedCards = []
-            }
-        }
-    }
-    
-    private func setIsValid(for cards: [Card]) -> Bool {
-        return colorIsValid(for: cards) && quantityIsValid(for: cards) && shapeIsValid(for: cards) && fillingIsValid(for: cards)
-    }
-    
-    private func colorIsValid(for cards: [Card]) -> Bool {
-        var red = 0
-        var green = 0
-        var blue = 0
-        for index in cards.indices {
-            switch cards[index].color {
-                case ContentColor.red:
-                    red += 1
-                case ContentColor.green:
-                    green += 1
-                case ContentColor.purple:
-                    blue += 1
-            }
-        }
-        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
-    }
-    
-    private func quantityIsValid(for cards: [Card]) -> Bool {
-        var red = 0
-        var green = 0
-        var blue = 0
-        for index in cards.indices {
-            switch cards[index].number {
-                case 1:
-                    red += 1
-                case 2:
-                    green += 1
-                case 3:
-                    blue += 1
-                default:
-                    blue += 0
-            }
-        }
-        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
-    }
-    
-    private func shapeIsValid(for cards: [Card]) -> Bool {
-        var red = 0
-        var green = 0
-        var blue = 0
-        for index in cards.indices {
-            switch cards[index].shape {
-                case ContentShape.circle:
-                    red += 1
-                case ContentShape.rectangle:
-                    green += 1
-                case ContentShape.diamond:
-                    blue += 1
-            }
-        }
-        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
-    }
-    
-    private func fillingIsValid(for cards: [Card]) -> Bool {
-        var red = 0
-        var green = 0
-        var blue = 0
-        for index in cards.indices {
-            switch cards[index].filling {
-                case ContentFilling.empty:
-                    red += 1
-                case ContentFilling.full:
-                    green += 1
-                case ContentFilling.squiggly:
-                    blue += 1
-            }
-        }
-        return red == 1 && green == 1 && blue == 1 || red == 3 || green == 3 || blue == 3
-    }
-    
-    
-    
+        if let chosenIndex = playingCards.firstIndex(where: { $0.id == card.id }) {
 
+            if selectedCards.count == 3 { resetCards() }
+        
+            if !playingCards[chosenIndex].isSelected {
+                playingCards[chosenIndex].isSelected = true
+                selectedCards.append(playingCards[chosenIndex])
+                
+                if selectedCards.count == 3 {
+                    if formSet(by: selectedCards) {
+                        selectedCards.forEach { card in
+                            let index = playingCards.firstIndex(of: card)!
+                            playingCards[index].isMatched = true
+                            playingCards[index].isSelected = false
+                        }
+                    } else {
+                        selectedCards.forEach { card in
+                            let index = playingCards.firstIndex(of: card)!
+                            playingCards[index].isMatched = false
+                            playingCards[index].isSelected = false
+                        }
+                    }
+                }
+            }
+            else {
+                playingCards[chosenIndex].isSelected = false
+                selectedCards.removeAll(where: { $0 == playingCards[chosenIndex] }) }
+        }
+    }
+
+    mutating func dealCards() {
+        if indexOfNextCardToDeal < 81 {
+            if selectedCards.count == 3 && playingCards.first(where: { $0 == selectedCards.first })!.isMatched! { resetCards() }
+            else {
+                playingCards.append(cards[indexOfNextCardToDeal])
+                playingCards.append(cards[indexOfNextCardToDeal+1])
+                playingCards.append(cards[indexOfNextCardToDeal+2])
+                numberOfCardsOnScreen += 3
+                indexOfNextCardToDeal += 3
+            }
+        }
+    }
+    
+    private func formSet(by cards: [Card]) -> Bool {
+        return feature(\Card.color, isValidFor: cards) && feature(\Card.shape, isValidFor: cards) && feature(\Card.filling, isValidFor: cards) && feature(\Card.number, isValidFor: cards)
+    }
+
+    private func feature<F: Hashable>(_ keyPath: KeyPath<Card, F>, isValidFor cards: [Card]) -> Bool {
+        let count = cards.reduce(into: Set<F>()) { $0.insert($1[keyPath: keyPath]) }.count
+        return count == 1 || count == 3
+    }
     
     init() {
         cards = []
@@ -153,8 +118,8 @@ struct GameModel {
                 }
             }
         }
-        cards = cards.shuffled()
-        cardsOnScreen = Array(cards.prefix(numberOfCardsOnScreen))
+//        cards = cards.shuffled()
+        playingCards = Array(cards.prefix(numberOfCardsOnScreen))
     }
     
     enum ContentColor {
@@ -164,7 +129,7 @@ struct GameModel {
     }
     
     enum ContentShape {
-        case rectangle
+        case squiggly
         case circle
         case diamond
     }
@@ -172,16 +137,20 @@ struct GameModel {
     enum ContentFilling {
         case empty
         case full
-        case squiggly
+        case striped
     }
     
-    struct Card: Identifiable {
+    struct Card: Identifiable, Equatable {
         var color: ContentColor
         var shape: ContentShape
         var filling: ContentFilling
         var number: Int
         var id: Int
         var isSelected = false
-        var isDone = false
+        var isMatched: Bool?
+        
+        static func == (lhs: Card, rhs: Card) -> Bool {
+                return lhs.id == rhs.id
+            }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD089AB328731AEC00D0FE3B /* Striped.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD089AB228731AEC00D0FE3B /* Striped.swift */; };
+		CD089AB52873A0C900D0FE3B /* Squiggly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD089AB42873A0C900D0FE3B /* Squiggly.swift */; };
 		CDCD90F628678854005FAEDC /* a3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD90F528678854005FAEDC /* a3App.swift */; };
 		CDCD90F828678854005FAEDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCD90F728678854005FAEDC /* ContentView.swift */; };
 		CDCD90FA28678859005FAEDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCD90F928678859005FAEDC /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD089AB228731AEC00D0FE3B /* Striped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Striped.swift; sourceTree = "<group>"; };
+		CD089AB42873A0C900D0FE3B /* Squiggly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggly.swift; sourceTree = "<group>"; };
 		CDCD90F228678854005FAEDC /* a3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCD90F528678854005FAEDC /* a3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a3App.swift; sourceTree = "<group>"; };
 		CDCD90F728678854005FAEDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 		CDCD90F428678854005FAEDC /* a3 */ = {
 			isa = PBXGroup;
 			children = (
+				CD089AB42873A0C900D0FE3B /* Squiggly.swift */,
+				CD089AB228731AEC00D0FE3B /* Striped.swift */,
 				CDCD90F528678854005FAEDC /* a3App.swift */,
 				CDCD90F728678854005FAEDC /* ContentView.swift */,
 				CDCD910328679526005FAEDC /* GameModel.swift */,
@@ -153,7 +159,9 @@
 				CDCD91062867991C005FAEDC /* GameViewModel.swift in Sources */,
 				CDCD90F828678854005FAEDC /* ContentView.swift in Sources */,
 				CDCD910428679526005FAEDC /* GameModel.swift in Sources */,
+				CD089AB328731AEC00D0FE3B /* Striped.swift in Sources */,
 				CDCD91082868E3F1005FAEDC /* AspectVGrid.swift in Sources */,
+				CD089AB52873A0C900D0FE3B /* Squiggly.swift in Sources */,
 				CDCD90F628678854005FAEDC /* a3App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,20 +17,18 @@ class GameViewModel: ObservableObject {
     }
     
     var cardsOnScreen: Array<Card> {
-        model.cardsOnScreen
+        model.playingCards
     }
     
     func choose(_ card: Card) {
         model.choose(card)
     }
-    
+        
     func borderColor(for card: Card) -> Color {
         switch card.isSelected {
         case true:
-            print("he")
             return Color.red
         case false:
-            print("jjj")
             return Color.black
         }
     }
@@ -56,28 +54,53 @@ class GameViewModel: ObservableObject {
     
     @ViewBuilder
     func createSymbol(for card: Card) -> some View {
+        if let unwrappedBool = card.isMatched {
+            if !unwrappedBool { RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius).foregroundColor(.black)}
+            else {Circle().foregroundColor(.white) }
+        } else {
         switch card.shape {
-        case .rectangle:
-            createSymbolHelper(for: card, with: Rectangle())
-        case .circle:
-            createSymbolHelper(for: card, with: Circle())
-        case .diamond:
-            createSymbolHelper(for: card, with: Diamond())
+            case .squiggly:
+                createSymbolHelper(for: card, with: Squiggly())
+            case .circle:
+                createSymbolHelper(for: card, with: Circle())
+            case .diamond:
+                createSymbolHelper(for: card, with: Diamond())
+            }
         }
+    }
+    
+    func cover(for card: Card) -> Color {
+        if let unwrappedBoolean = card.isMatched {
+            if unwrappedBoolean {
+                return Color.green
+            } else {
+                return Color.black
+            }
+        }
+        return Color.white.opacity(0)
     }
 
     @ViewBuilder
-    private func createSymbolHelper<SymbolShape>(for card: Card, with shape: SymbolShape) -> some View where SymbolShape: Shape {
+    private func createSymbolHelper<SymbolShape: Shape>(for card: Card, with shape: SymbolShape) -> some View {
         switch card.filling {
             case .empty:
                 ZStack {
-                    shape.fill().foregroundColor(.white).padding()
-                    shape.stroke(lineWidth: 3.0)
+                    shape.fill().foregroundColor(.white)
+                    shape.stroke(lineWidth: DrawingConstants.lineWidth)
                 }
             case .full:
                 shape.fill().foregroundColor(color(for: card))
-            case .squiggly:
-                shape.opacity(0.3)
+            case .striped:
+                StripeView(shape: shape, stripeColor: color(for: card))
         }
+    }
+    
+    func opacityOfDealButton() -> Double {
+        if model.indexOfNextCardToDeal == 81 { return 0 }
+        else { return 1 }
+    }
+    
+    func dealCards() {
+        model.dealCards()
     }
 }
