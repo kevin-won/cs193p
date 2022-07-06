@@ -41,49 +41,64 @@ struct GameModel {
                 playingCards[unmatchedIndex].isMatched = nil
             }
         } else {
-            selectedCards.forEach { card in
-                let matchedIndex = playingCards.firstIndex(of: card)!
-                dealOneCard(at: matchedIndex)
+            if indexOfNextCardToDeal < 81 {
+                selectedCards.forEach { card in
+                    let matchedIndex = playingCards.firstIndex(of: card)!
+                    dealOneCard(at: matchedIndex)
+                }
             }
         }
         selectedCards = []
     }
     
     mutating func dealOneCard(at matchedIndex: Int) {
-        if indexOfNextCardToDeal < 81 {
-            playingCards[matchedIndex] = cards[indexOfNextCardToDeal]
-            indexOfNextCardToDeal += 1
-        } else { playingCards.remove(at: matchedIndex) }
+        playingCards[matchedIndex] = cards[indexOfNextCardToDeal]
+        indexOfNextCardToDeal += 1
     }
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = playingCards.firstIndex(where: { $0.id == card.id }) {
+            
+            if selectedCards.count < 3 || selectedCards.count == 3 && !selectedCards.contains(playingCards[chosenIndex]) {
 
-            if selectedCards.count == 3 { resetCards() }
-        
-            if !playingCards[chosenIndex].isSelected {
-                playingCards[chosenIndex].isSelected = true
-                selectedCards.append(playingCards[chosenIndex])
-                
-                if selectedCards.count == 3 {
-                    if formSet(by: selectedCards) {
-                        selectedCards.forEach { card in
-                            let index = playingCards.firstIndex(of: card)!
-                            playingCards[index].isMatched = true
-                            playingCards[index].isSelected = false
+                if selectedCards.count == 3 { resetCards() }
+
+                if !playingCards[chosenIndex].isSelected {
+                    playingCards[chosenIndex].isSelected = true
+                    selectedCards.append(playingCards[chosenIndex])
+                    
+                    if selectedCards.count == 4 {
+                        let chosenCard = playingCards[chosenIndex]
+                        for card in selectedCards {
+                            if card != chosenCard {
+                                let matchedIndex = playingCards.firstIndex(of: card)!
+                                playingCards.remove(at: matchedIndex)
+                            }
                         }
-                    } else {
-                        selectedCards.forEach { card in
-                            let index = playingCards.firstIndex(of: card)!
-                            playingCards[index].isMatched = false
-                            playingCards[index].isSelected = false
+                        selectedCards = [chosenCard]
+                    }
+                    
+                    if selectedCards.count == 3 {
+                        if formSet(by: selectedCards) {
+                            selectedCards.forEach { card in
+                                let index = playingCards.firstIndex(of: card)!
+                                playingCards[index].isMatched = true
+                                playingCards[index].isSelected = false
+                            }
+                        } else {
+                            selectedCards.forEach { card in
+                                let index = playingCards.firstIndex(of: card)!
+                                playingCards[index].isMatched = false
+                                playingCards[index].isSelected = false
+                            }
                         }
                     }
                 }
+                else {
+                    playingCards[chosenIndex].isSelected = false
+                    selectedCards.removeAll(where: { $0 == playingCards[chosenIndex] })
+                }
             }
-            else {
-                playingCards[chosenIndex].isSelected = false
-                selectedCards.removeAll(where: { $0 == playingCards[chosenIndex] }) }
         }
     }
 
@@ -122,7 +137,6 @@ struct GameModel {
                 }
             }
         }
-//        cards = cards.shuffled()
         playingCards = Array(cards.prefix(numberOfCardsOnScreen))
     }
     
