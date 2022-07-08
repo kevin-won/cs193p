@@ -12,6 +12,14 @@ class GameViewModel: ObservableObject {
         
     @Published private var model: GameModel = GameModel()
     
+    var cards: Array<Card> {
+        model.cards
+    }
+    
+    var undealtCards: Array<Card> {
+        model.undealtCards
+    }
+    
     func newGame() {
         model = GameModel()
     }
@@ -22,6 +30,10 @@ class GameViewModel: ObservableObject {
     
     func choose(_ card: Card) {
         model.choose(card)
+    }
+    
+    func dealInitialCards() {
+        model.dealInitialCards()
     }
         
     func borderColor(for card: Card) -> Color {
@@ -91,11 +103,15 @@ class GameViewModel: ObservableObject {
     }
     
     func opacityOfDealButton() -> Double {
-        if model.getIndexOfNextCardToDeal() == 81 { return 0 }
+        if model.numberOfUndealtCards() == 0 { return 0 }
         else { return 1 }
     }
     
     func dealCards() {
         model.dealCards()
+    }
+    
+    func shuffle() {
+        model.shuffle()
     }
 }
