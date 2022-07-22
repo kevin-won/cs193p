@@ -24,16 +24,12 @@ class GameViewModel: ObservableObject {
         model = GameModel()
     }
     
-    var cardsOnScreen: Array<Card> {
+    var playingCards: Array<Card> {
         model.playingCards
     }
     
     func choose(_ card: Card) {
         model.choose(card)
-    }
-    
-    func dealInitialCards() {
-        model.dealInitialCards()
     }
         
     func borderColor(for card: Card) -> Color {
@@ -91,6 +87,10 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    func discardedCards() -> Array<Card> {
+        return model.discardedCards
+    }
+    
     func cover(for card: Card) -> Color {
         if let unwrappedBoolean = card.isMatched {
             if unwrappedBoolean {
@@ -102,16 +102,16 @@ class GameViewModel: ObservableObject {
         return Color.white.opacity(0)
     }
     
-    func opacityOfDealButton() -> Double {
-        if model.numberOfUndealtCards() == 0 { return 0 }
-        else { return 1 }
-    }
-    
-    func dealCards() {
-        model.dealCards()
+    func deal() {
+        model.deal()
     }
     
     func shuffle() {
         model.shuffle()
     }
+    
+    func numberOfCardsToDeal() -> Int {
+        model.numberOfCardsToDeal()
+    }
+    
 }

@@ -14,6 +14,8 @@ struct GameModel {
     
     var undealtCards: Array<Card>
     
+    var discardedCards: Array<Card> = []
+    
     private(set) var playingCards: Array<Card>
                             
     private var selectedCards: Array<Card> = []
@@ -26,10 +28,23 @@ struct GameModel {
     
     private static var numbers = [1, 2, 3]
     
-     func numberOfUndealtCards() -> Int {
+    func numberOfUndealtCards() -> Int {
         return undealtCards.count
     }
     
+    mutating func deal() {
+        playingCards.append(undealtCards[0])
+        undealtCards.remove(at: 0)
+    }
+    
+    func numberOfCardsToDeal() -> Int {
+        if numberOfUndealtCards() == 81 {
+            return 12
+        } else {
+            return 3
+        }
+    }
+
     mutating func resetCards() {
         if !playingCards.first(where: { $0 == selectedCards.first })!.isMatched! {
             selectedCards.forEach { card in
@@ -37,24 +52,11 @@ struct GameModel {
                 playingCards[unmatchedIndex].isMatched = nil
             }
             selectedCards = []
-        } else {
-            if numberOfUndealtCards() > 0 {
-                selectedCards.forEach { card in
-                    let matchedIndex = playingCards.firstIndex(of: card)!
-                    dealOneCard(at: matchedIndex)
-                }
-                selectedCards = []
-            }
-        }
+        } 
     }
     
     mutating func shuffle() {
         playingCards = playingCards.shuffled()
-    }
-    
-    mutating func dealOneCard(at matchedIndex: Int) {
-        playingCards[matchedIndex] = undealtCards[0]
-        undealtCards.remove(at: 0)
     }
     
     mutating func choose(_ card: Card) {
@@ -72,6 +74,7 @@ struct GameModel {
                         let chosenCard = playingCards[chosenIndex]
                         for card in selectedCards {
                             if card != chosenCard {
+                                discardedCards.append(card)
                                 let matchedIndex = playingCards.firstIndex(of: card)!
                                 playingCards.remove(at: matchedIndex)
                             }
@@ -102,20 +105,6 @@ struct GameModel {
             }
         }
     }
-
-    mutating func dealCards() {
-        if numberOfUndealtCards() > 0 {
-            if selectedCards.count == 3 && playingCards.first(where: { $0 == selectedCards.first })!.isMatched! { resetCards() }
-            else {
-                playingCards.append(undealtCards[0])
-                undealtCards.remove(at: 0)
-                playingCards.append(undealtCards[0])
-                undealtCards.remove(at: 0)
-                playingCards.append(undealtCards[0])
-                undealtCards.remove(at: 0)
-            }
-        }
-    }
     
     private func formSet(by cards: [Card]) -> Bool {
         return feature(\Card.color, isValidFor: cards) && feature(\Card.shape, isValidFor: cards) && feature(\Card.filling, isValidFor: cards) && feature(\Card.number, isValidFor: cards)
@@ -141,13 +130,6 @@ struct GameModel {
         }
         playingCards = []
         undealtCards = cards
-    }
-    
-    mutating func dealInitialCards() {
-        playingCards = Array(cards.prefix(81))
-        playingCards.forEach { _ in
-            undealtCards.remove(at: 0)
-        }
     }
     
     enum ContentColor {

@@ -9,13 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: GameViewModel
+    
+    @Namespace private var dealingNamespace
 
     var body: some View {
         VStack {
             newGameButton
             gameBody
-            deckBody
-            dealThreeCardsButton
+            HStack {
+                deckBody
+                discardedDeckBody
+            }
             shuffleButton
         }
     }
@@ -26,10 +30,11 @@ struct ContentView: View {
     }
     
     var gameBody: some View {
-        AspectVGrid(items: viewModel.cardsOnScreen, aspectRatio: 2/3) { card in
+        AspectVGrid(items: viewModel.playingCards, aspectRatio: 2/3) { card in
             CardView(viewModel: viewModel, card: card)
+                .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                 .padding(4)
-                .transition(AnyTransition.asymmetric(insertion: .scale, removal: .opacity))
+//                .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
                 .onTapGesture {
                     withAnimation {
                         viewModel.choose(card)
@@ -40,27 +45,46 @@ struct ContentView: View {
         .padding(.horizontal)
     }
     
+    private func dealAnimation(for cardNumber: Int, _ totalCardsToDeal: Int) -> Animation {
+        let delay = Double(cardNumber) * (CardConstants.totalDealDuration / Double(totalCardsToDeal))
+        return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
+    }
+    
     var deckBody: some View {
         ZStack {
             ForEach(viewModel.undealtCards) { card in
                 CardView(viewModel: viewModel, card: card)
-                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .scale))
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+//                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity))
             }
+            RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
         }
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
         .onTapGesture {
-            withAnimation(.easeInOut(duration: 3)) {
-                viewModel.dealInitialCards()
+            for cardNumber in Array(0..<viewModel.numberOfCardsToDeal()) {
+                withAnimation(dealAnimation(for: cardNumber, viewModel.numberOfCardsToDeal())) {
+                    viewModel.deal()
+                }
             }
         }
+    }
+    
+    var discardedDeckBody: some View {
+        ZStack {
+            ForEach(viewModel.discardedCards()) { card in
+                CardView(viewModel: viewModel, card: card)
+            }
+        }
+        .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(CardConstants.color)
     }
     
     private struct CardConstants {
         static let color = Color.red
         static let aspectRatio: CGFloat = 2/3
         static let dealDuration: Double = 0.5
-        static let totalDealDuration: Double = 2
+        static let totalDealDuration: Double = 0.7
         static let undealtHeight: CGFloat = 90
         static let undealtWidth = undealtHeight * aspectRatio
     }
@@ -71,11 +95,6 @@ struct ContentView: View {
                 viewModel.shuffle()
             }
         }
-    }
-    
-    var dealThreeCardsButton: some View {
-        Button(action: { viewModel.dealCards() }) { Text("Deal 3 More Cards")
-            .font(.caption) }.opacity(viewModel.opacityOfDealButton())
     }
 }
 
