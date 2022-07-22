@@ -7,47 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD34223E288AFB4D00AF88B1 /* a5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34222E288AFB4D00AF88B1 /* a5App.swift */; };
-		CD34223F288AFB4D00AF88B1 /* a5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34222E288AFB4D00AF88B1 /* a5App.swift */; };
-		CD342240288AFB4D00AF88B1 /* EmojiArtDocumentView in Sources */ = {isa = PBXBuildFile; fileRef = CD34222F288AFB4D00AF88B1 /* EmojiArtDocumentView */; };
-		CD342241288AFB4D00AF88B1 /* EmojiArtDocumentView in Sources */ = {isa = PBXBuildFile; fileRef = CD34222F288AFB4D00AF88B1 /* EmojiArtDocumentView */; };
-		CD342242288AFB4D00AF88B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD342230288AFB4D00AF88B1 /* Assets.xcassets */; };
-		CD342243288AFB4D00AF88B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD342230288AFB4D00AF88B1 /* Assets.xcassets */; };
-		CD34224D288AFB9500AF88B1 /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34224C288AFB9500AF88B1 /* EmojiArtDocument.swift */; };
-		CD34224E288AFB9500AF88B1 /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34224C288AFB9500AF88B1 /* EmojiArtDocument.swift */; };
-		CD342250288AFBA900AF88B1 /* EmojiArtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34224F288AFBA900AF88B1 /* EmojiArtModel.swift */; };
-		CD342251288AFBA900AF88B1 /* EmojiArtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD34224F288AFBA900AF88B1 /* EmojiArtModel.swift */; };
-		CD342253288AFBBE00AF88B1 /* EmojiArtModel.Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD342252288AFBBE00AF88B1 /* EmojiArtModel.Background.swift */; };
-		CD342254288AFBBE00AF88B1 /* EmojiArtModel.Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD342252288AFBBE00AF88B1 /* EmojiArtModel.Background.swift */; };
-		CD342256288AFBD500AF88B1 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD342255288AFBD500AF88B1 /* UtilityExtensions.swift */; };
-		CD342257288AFBD500AF88B1 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD342255288AFBD500AF88B1 /* UtilityExtensions.swift */; };
-		CD342259288AFBF600AF88B1 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD342258288AFBF600AF88B1 /* UtilityViews.swift */; };
-		CD34225A288AFBF600AF88B1 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD342258288AFBF600AF88B1 /* UtilityViews.swift */; };
+		CD2C051B288AFFB300F8B406 /* a5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C050B288AFFB200F8B406 /* a5App.swift */; };
+		CD2C051C288AFFB300F8B406 /* a5App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C050B288AFFB200F8B406 /* a5App.swift */; };
+		CD2C051D288AFFB300F8B406 /* EmojiArtDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C050C288AFFB200F8B406 /* EmojiArtDocumentView.swift */; };
+		CD2C051E288AFFB300F8B406 /* EmojiArtDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C050C288AFFB200F8B406 /* EmojiArtDocumentView.swift */; };
+		CD2C051F288AFFB300F8B406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2C050D288AFFB300F8B406 /* Assets.xcassets */; };
+		CD2C0520288AFFB300F8B406 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD2C050D288AFFB300F8B406 /* Assets.xcassets */; };
+		CD2C052A288AFFE100F8B406 /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0529288AFFE100F8B406 /* EmojiArtDocument.swift */; };
+		CD2C052B288AFFE100F8B406 /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0529288AFFE100F8B406 /* EmojiArtDocument.swift */; };
+		CD2C052D288AFFF300F8B406 /* EmojiArtModel.Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C052C288AFFF300F8B406 /* EmojiArtModel.Background.swift */; };
+		CD2C052E288AFFF300F8B406 /* EmojiArtModel.Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C052C288AFFF300F8B406 /* EmojiArtModel.Background.swift */; };
+		CD2C0530288B000A00F8B406 /* EmojiArtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C052F288B000A00F8B406 /* EmojiArtModel.swift */; };
+		CD2C0531288B000A00F8B406 /* EmojiArtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C052F288B000A00F8B406 /* EmojiArtModel.swift */; };
+		CD2C0533288B001A00F8B406 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0532288B001A00F8B406 /* UtilityExtensions.swift */; };
+		CD2C0534288B001A00F8B406 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0532288B001A00F8B406 /* UtilityExtensions.swift */; };
+		CD2C0536288B002700F8B406 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0535288B002700F8B406 /* UtilityViews.swift */; };
+		CD2C0537288B002700F8B406 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0535288B002700F8B406 /* UtilityViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CD34222E288AFB4D00AF88B1 /* a5App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a5App.swift; sourceTree = "<group>"; };
-		CD34222F288AFB4D00AF88B1 /* EmojiArtDocumentView */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmojiArtDocumentView; sourceTree = "<group>"; };
-		CD342230288AFB4D00AF88B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CD342235288AFB4D00AF88B1 /* a5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a5.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD34223B288AFB4D00AF88B1 /* a5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a5.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD34223D288AFB4D00AF88B1 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		CD34224C288AFB9500AF88B1 /* EmojiArtDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocument.swift; sourceTree = "<group>"; };
-		CD34224F288AFBA900AF88B1 /* EmojiArtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtModel.swift; sourceTree = "<group>"; };
-		CD342252288AFBBE00AF88B1 /* EmojiArtModel.Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtModel.Background.swift; sourceTree = "<group>"; };
-		CD342255288AFBD500AF88B1 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
-		CD342258288AFBF600AF88B1 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+		CD2C050B288AFFB200F8B406 /* a5App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = a5App.swift; sourceTree = "<group>"; };
+		CD2C050C288AFFB200F8B406 /* EmojiArtDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentView.swift; sourceTree = "<group>"; };
+		CD2C050D288AFFB300F8B406 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD2C0512288AFFB300F8B406 /* a5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD2C0518288AFFB300F8B406 /* a5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = a5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD2C051A288AFFB300F8B406 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		CD2C0529288AFFE100F8B406 /* EmojiArtDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocument.swift; sourceTree = "<group>"; };
+		CD2C052C288AFFF300F8B406 /* EmojiArtModel.Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtModel.Background.swift; sourceTree = "<group>"; };
+		CD2C052F288B000A00F8B406 /* EmojiArtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtModel.swift; sourceTree = "<group>"; };
+		CD2C0532288B001A00F8B406 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
+		CD2C0535288B002700F8B406 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CD342232288AFB4D00AF88B1 /* Frameworks */ = {
+		CD2C050F288AFFB300F8B406 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD342238288AFB4D00AF88B1 /* Frameworks */ = {
+		CD2C0515288AFFB300F8B406 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,43 +57,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CD342228288AFB4D00AF88B1 = {
+		CD2C0505288AFFB200F8B406 = {
 			isa = PBXGroup;
 			children = (
-				CD34222D288AFB4D00AF88B1 /* Shared */,
-				CD34223C288AFB4D00AF88B1 /* macOS */,
-				CD342236288AFB4D00AF88B1 /* Products */,
+				CD2C050A288AFFB200F8B406 /* Shared */,
+				CD2C0519288AFFB300F8B406 /* macOS */,
+				CD2C0513288AFFB300F8B406 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		CD34222D288AFB4D00AF88B1 /* Shared */ = {
+		CD2C050A288AFFB200F8B406 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CD34222E288AFB4D00AF88B1 /* a5App.swift */,
-				CD34222F288AFB4D00AF88B1 /* EmojiArtDocumentView */,
-				CD34224C288AFB9500AF88B1 /* EmojiArtDocument.swift */,
-				CD34224F288AFBA900AF88B1 /* EmojiArtModel.swift */,
-				CD342252288AFBBE00AF88B1 /* EmojiArtModel.Background.swift */,
-				CD342255288AFBD500AF88B1 /* UtilityExtensions.swift */,
-				CD342258288AFBF600AF88B1 /* UtilityViews.swift */,
-				CD342230288AFB4D00AF88B1 /* Assets.xcassets */,
+				CD2C050B288AFFB200F8B406 /* a5App.swift */,
+				CD2C050C288AFFB200F8B406 /* EmojiArtDocumentView.swift */,
+				CD2C0529288AFFE100F8B406 /* EmojiArtDocument.swift */,
+				CD2C052C288AFFF300F8B406 /* EmojiArtModel.Background.swift */,
+				CD2C050D288AFFB300F8B406 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		CD342236288AFB4D00AF88B1 /* Products */ = {
+		CD2C0513288AFFB300F8B406 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD342235288AFB4D00AF88B1 /* a5.app */,
-				CD34223B288AFB4D00AF88B1 /* a5.app */,
+				CD2C0512288AFFB300F8B406 /* a5.app */,
+				CD2C0518288AFFB300F8B406 /* a5.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CD34223C288AFB4D00AF88B1 /* macOS */ = {
+		CD2C0519288AFFB300F8B406 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				CD34223D288AFB4D00AF88B1 /* macOS.entitlements */,
+				CD2C051A288AFFB300F8B406 /* macOS.entitlements */,
+				CD2C052F288B000A00F8B406 /* EmojiArtModel.swift */,
+				CD2C0532288B001A00F8B406 /* UtilityExtensions.swift */,
+				CD2C0535288B002700F8B406 /* UtilityViews.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -101,13 +101,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD342234288AFB4D00AF88B1 /* a5 (iOS) */ = {
+		CD2C0511288AFFB300F8B406 /* a5 (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD342246288AFB4D00AF88B1 /* Build configuration list for PBXNativeTarget "a5 (iOS)" */;
+			buildConfigurationList = CD2C0523288AFFB300F8B406 /* Build configuration list for PBXNativeTarget "a5 (iOS)" */;
 			buildPhases = (
-				CD342231288AFB4D00AF88B1 /* Sources */,
-				CD342232288AFB4D00AF88B1 /* Frameworks */,
-				CD342233288AFB4D00AF88B1 /* Resources */,
+				CD2C050E288AFFB300F8B406 /* Sources */,
+				CD2C050F288AFFB300F8B406 /* Frameworks */,
+				CD2C0510288AFFB300F8B406 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -115,16 +115,16 @@
 			);
 			name = "a5 (iOS)";
 			productName = "a5 (iOS)";
-			productReference = CD342235288AFB4D00AF88B1 /* a5.app */;
+			productReference = CD2C0512288AFFB300F8B406 /* a5.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CD34223A288AFB4D00AF88B1 /* a5 (macOS) */ = {
+		CD2C0517288AFFB300F8B406 /* a5 (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD342249288AFB4D00AF88B1 /* Build configuration list for PBXNativeTarget "a5 (macOS)" */;
+			buildConfigurationList = CD2C0526288AFFB300F8B406 /* Build configuration list for PBXNativeTarget "a5 (macOS)" */;
 			buildPhases = (
-				CD342237288AFB4D00AF88B1 /* Sources */,
-				CD342238288AFB4D00AF88B1 /* Frameworks */,
-				CD342239288AFB4D00AF88B1 /* Resources */,
+				CD2C0514288AFFB300F8B406 /* Sources */,
+				CD2C0515288AFFB300F8B406 /* Frameworks */,
+				CD2C0516288AFFB300F8B406 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -132,28 +132,28 @@
 			);
 			name = "a5 (macOS)";
 			productName = "a5 (macOS)";
-			productReference = CD34223B288AFB4D00AF88B1 /* a5.app */;
+			productReference = CD2C0518288AFFB300F8B406 /* a5.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CD342229288AFB4D00AF88B1 /* Project object */ = {
+		CD2C0506288AFFB200F8B406 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					CD342234288AFB4D00AF88B1 = {
+					CD2C0511288AFFB300F8B406 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
-					CD34223A288AFB4D00AF88B1 = {
+					CD2C0517288AFFB300F8B406 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = CD34222C288AFB4D00AF88B1 /* Build configuration list for PBXProject "a5" */;
+			buildConfigurationList = CD2C0509288AFFB200F8B406 /* Build configuration list for PBXProject "a5" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,69 +161,69 @@
 				en,
 				Base,
 			);
-			mainGroup = CD342228288AFB4D00AF88B1;
-			productRefGroup = CD342236288AFB4D00AF88B1 /* Products */;
+			mainGroup = CD2C0505288AFFB200F8B406;
+			productRefGroup = CD2C0513288AFFB300F8B406 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD342234288AFB4D00AF88B1 /* a5 (iOS) */,
-				CD34223A288AFB4D00AF88B1 /* a5 (macOS) */,
+				CD2C0511288AFFB300F8B406 /* a5 (iOS) */,
+				CD2C0517288AFFB300F8B406 /* a5 (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD342233288AFB4D00AF88B1 /* Resources */ = {
+		CD2C0510288AFFB300F8B406 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD342242288AFB4D00AF88B1 /* Assets.xcassets in Resources */,
+				CD2C051F288AFFB300F8B406 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD342239288AFB4D00AF88B1 /* Resources */ = {
+		CD2C0516288AFFB300F8B406 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD342243288AFB4D00AF88B1 /* Assets.xcassets in Resources */,
+				CD2C0520288AFFB300F8B406 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CD342231288AFB4D00AF88B1 /* Sources */ = {
+		CD2C050E288AFFB300F8B406 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD342259288AFBF600AF88B1 /* UtilityViews.swift in Sources */,
-				CD342240288AFB4D00AF88B1 /* EmojiArtDocumentView in Sources */,
-				CD34224D288AFB9500AF88B1 /* EmojiArtDocument.swift in Sources */,
-				CD342256288AFBD500AF88B1 /* UtilityExtensions.swift in Sources */,
-				CD342250288AFBA900AF88B1 /* EmojiArtModel.swift in Sources */,
-				CD34223E288AFB4D00AF88B1 /* a5App.swift in Sources */,
-				CD342253288AFBBE00AF88B1 /* EmojiArtModel.Background.swift in Sources */,
+				CD2C0536288B002700F8B406 /* UtilityViews.swift in Sources */,
+				CD2C051D288AFFB300F8B406 /* EmojiArtDocumentView.swift in Sources */,
+				CD2C0530288B000A00F8B406 /* EmojiArtModel.swift in Sources */,
+				CD2C0533288B001A00F8B406 /* UtilityExtensions.swift in Sources */,
+				CD2C052A288AFFE100F8B406 /* EmojiArtDocument.swift in Sources */,
+				CD2C051B288AFFB300F8B406 /* a5App.swift in Sources */,
+				CD2C052D288AFFF300F8B406 /* EmojiArtModel.Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD342237288AFB4D00AF88B1 /* Sources */ = {
+		CD2C0514288AFFB300F8B406 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD34225A288AFBF600AF88B1 /* UtilityViews.swift in Sources */,
-				CD342241288AFB4D00AF88B1 /* EmojiArtDocumentView in Sources */,
-				CD34224E288AFB9500AF88B1 /* EmojiArtDocument.swift in Sources */,
-				CD342257288AFBD500AF88B1 /* UtilityExtensions.swift in Sources */,
-				CD342251288AFBA900AF88B1 /* EmojiArtModel.swift in Sources */,
-				CD34223F288AFB4D00AF88B1 /* a5App.swift in Sources */,
-				CD342254288AFBBE00AF88B1 /* EmojiArtModel.Background.swift in Sources */,
+				CD2C0537288B002700F8B406 /* UtilityViews.swift in Sources */,
+				CD2C051E288AFFB300F8B406 /* EmojiArtDocumentView.swift in Sources */,
+				CD2C0531288B000A00F8B406 /* EmojiArtModel.swift in Sources */,
+				CD2C0534288B001A00F8B406 /* UtilityExtensions.swift in Sources */,
+				CD2C052B288AFFE100F8B406 /* EmojiArtDocument.swift in Sources */,
+				CD2C051C288AFFB300F8B406 /* a5App.swift in Sources */,
+				CD2C052E288AFFF300F8B406 /* EmojiArtModel.Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		CD342244288AFB4D00AF88B1 /* Debug */ = {
+		CD2C0521288AFFB300F8B406 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -281,7 +281,7 @@
 			};
 			name = Debug;
 		};
-		CD342245288AFB4D00AF88B1 /* Release */ = {
+		CD2C0522288AFFB300F8B406 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -332,7 +332,7 @@
 			};
 			name = Release;
 		};
-		CD342247288AFB4D00AF88B1 /* Debug */ = {
+		CD2C0524288AFFB300F8B406 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -362,7 +362,7 @@
 			};
 			name = Debug;
 		};
-		CD342248288AFB4D00AF88B1 /* Release */ = {
+		CD2C0525288AFFB300F8B406 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -393,7 +393,7 @@
 			};
 			name = Release;
 		};
-		CD34224A288AFB4D00AF88B1 /* Debug */ = {
+		CD2C0527288AFFB300F8B406 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -421,7 +421,7 @@
 			};
 			name = Debug;
 		};
-		CD34224B288AFB4D00AF88B1 /* Release */ = {
+		CD2C0528288AFFB300F8B406 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -452,34 +452,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD34222C288AFB4D00AF88B1 /* Build configuration list for PBXProject "a5" */ = {
+		CD2C0509288AFFB200F8B406 /* Build configuration list for PBXProject "a5" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD342244288AFB4D00AF88B1 /* Debug */,
-				CD342245288AFB4D00AF88B1 /* Release */,
+				CD2C0521288AFFB300F8B406 /* Debug */,
+				CD2C0522288AFFB300F8B406 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD342246288AFB4D00AF88B1 /* Build configuration list for PBXNativeTarget "a5 (iOS)" */ = {
+		CD2C0523288AFFB300F8B406 /* Build configuration list for PBXNativeTarget "a5 (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD342247288AFB4D00AF88B1 /* Debug */,
-				CD342248288AFB4D00AF88B1 /* Release */,
+				CD2C0524288AFFB300F8B406 /* Debug */,
+				CD2C0525288AFFB300F8B406 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD342249288AFB4D00AF88B1 /* Build configuration list for PBXNativeTarget "a5 (macOS)" */ = {
+		CD2C0526288AFFB300F8B406 /* Build configuration list for PBXNativeTarget "a5 (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD34224A288AFB4D00AF88B1 /* Debug */,
-				CD34224B288AFB4D00AF88B1 /* Release */,
+				CD2C0527288AFFB300F8B406 /* Debug */,
+				CD2C0528288AFFB300F8B406 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CD342229288AFB4D00AF88B1 /* Project object */;
+	rootObject = CD2C0506288AFFB200F8B406 /* Project object */;
 }
