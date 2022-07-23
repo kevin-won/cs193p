@@ -11,7 +11,6 @@ import SwiftUI
 struct a5App: App {
     var body: some Scene {
         let document = EmojiArtDocument()
-        
         WindowGroup {
             EmojiArtDocumentView(document: document)
         }

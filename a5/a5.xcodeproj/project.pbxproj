@@ -23,6 +23,8 @@
 		CD2C0534288B001A00F8B406 /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0532288B001A00F8B406 /* UtilityExtensions.swift */; };
 		CD2C0536288B002700F8B406 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0535288B002700F8B406 /* UtilityViews.swift */; };
 		CD2C0537288B002700F8B406 /* UtilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2C0535288B002700F8B406 /* UtilityViews.swift */; };
+		CD476DFF288B087400224920 /* SelectionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD476DFE288B087400224920 /* SelectionEffect.swift */; };
+		CD476E00288B087400224920 /* SelectionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD476DFE288B087400224920 /* SelectionEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,7 @@
 		CD2C052F288B000A00F8B406 /* EmojiArtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtModel.swift; sourceTree = "<group>"; };
 		CD2C0532288B001A00F8B406 /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		CD2C0535288B002700F8B406 /* UtilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityViews.swift; sourceTree = "<group>"; };
+		CD476DFE288B087400224920 /* SelectionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 			children = (
 				CD2C050B288AFFB200F8B406 /* a5App.swift */,
 				CD2C050C288AFFB200F8B406 /* EmojiArtDocumentView.swift */,
+				CD476DFE288B087400224920 /* SelectionEffect.swift */,
 				CD2C0529288AFFE100F8B406 /* EmojiArtDocument.swift */,
 				CD2C052C288AFFF300F8B406 /* EmojiArtModel.Background.swift */,
 				CD2C050D288AFFB300F8B406 /* Assets.xcassets */,
@@ -199,6 +203,7 @@
 				CD2C0536288B002700F8B406 /* UtilityViews.swift in Sources */,
 				CD2C051D288AFFB300F8B406 /* EmojiArtDocumentView.swift in Sources */,
 				CD2C0530288B000A00F8B406 /* EmojiArtModel.swift in Sources */,
+				CD476DFF288B087400224920 /* SelectionEffect.swift in Sources */,
 				CD2C0533288B001A00F8B406 /* UtilityExtensions.swift in Sources */,
 				CD2C052A288AFFE100F8B406 /* EmojiArtDocument.swift in Sources */,
 				CD2C051B288AFFB300F8B406 /* a5App.swift in Sources */,
@@ -213,6 +218,7 @@
 				CD2C0537288B002700F8B406 /* UtilityViews.swift in Sources */,
 				CD2C051E288AFFB300F8B406 /* EmojiArtDocumentView.swift in Sources */,
 				CD2C0531288B000A00F8B406 /* EmojiArtModel.swift in Sources */,
+				CD476E00288B087400224920 /* SelectionEffect.swift in Sources */,
 				CD2C0534288B001A00F8B406 /* UtilityExtensions.swift in Sources */,
 				CD2C052B288AFFE100F8B406 /* EmojiArtDocument.swift in Sources */,
 				CD2C051C288AFFB300F8B406 /* a5App.swift in Sources */,

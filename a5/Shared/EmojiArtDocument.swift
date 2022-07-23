@@ -80,5 +80,9 @@ class EmojiArtDocument: ObservableObject {
         }
     }
     
+    func deleteEmoji(_ emoji: EmojiArtModel.Emoji) {
+        emojiArt.deleteEmoji(emoji)
+    }
+    
     
 }
