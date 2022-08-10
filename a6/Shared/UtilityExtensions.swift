@@ -1,8 +1,8 @@
 //
 //  UtilityExtensions.swift
-//  EmojiArt
+//  a6
 //
-//  Created by Kevin Won on 7/9/22.
+//  Created by Kevin Won on 7/26/22.
 //
 
 import SwiftUI

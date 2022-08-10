@@ -128,6 +128,7 @@ struct GameModel {
                 }
             }
         }
+        cards = cards.shuffled()
         playingCards = []
         undealtCards = cards
     }

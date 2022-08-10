@@ -137,6 +137,7 @@ struct GameModel {
                 }
             }
         }
+        cards = cards.shuffled()
         playingCards = Array(cards.prefix(numberOfCardsOnScreen))
     }
     
