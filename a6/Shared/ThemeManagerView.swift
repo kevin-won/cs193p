@@ -24,25 +24,23 @@ struct ThemeManagerView: View {
     
     @State private var chosenThemeIndex = 0
     
-    @State private var game: EmojiMemoryGame?
+    @State private var games: [Theme: EmojiMemoryGame] = [:]
     
-    func destinationGame(with theme: Theme) -> EmojiMemoryGame {
-        if let unwrappedGame = game {
-            if unwrappedGame.chosenTheme == theme {
-                return game!
-            }
+    func destinationView(for theme: Theme) -> EmojiMemoryGameView {
+        if let unwrappedGame = games[theme] {
+            return EmojiMemoryGameView(game: unwrappedGame)
         }
-        return EmojiMemoryGame(with: theme)
+        let newGame = EmojiMemoryGame(with: theme)
+        games[theme] = newGame
+        return EmojiMemoryGameView(game: newGame)
     }
 
-    
     var body: some View {
         NavigationView {
             List {
                 ForEach(store.themes) { theme in
-                    let new_game = destinationGame(with: theme)
-                    NavigationLink(destination: EmojiMemoryGameView(game: new_game)) {
-                        themeRow(for: theme, in: new_game)
+                    NavigationLink(destination: destinationView(for: theme)) {
+                        themeRow(for: theme)
                     }
                     .gesture(editMode == .active ? tap(for: theme) : nil)
                 }
@@ -83,7 +81,7 @@ struct ThemeManagerView: View {
     }
     
     func addTheme() {
-        store.insertTheme(named: "New", emojis: "", at: chosenThemeIndex, color: "Black")
+        store.insertTheme(named: "New", emojis: "", at: chosenThemeIndex, rgbaColor: RGBAColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0))
         themeToEdit = store.theme(at: chosenThemeIndex)
     }
     
@@ -95,22 +93,22 @@ struct ThemeManagerView: View {
         }
     }
     
-    func themeRow(for theme: Theme, in game: EmojiMemoryGame) -> some View {
+    func themeRow(for theme: Theme) -> some View {
         VStack(alignment: .leading) {
             Text(theme.name)
                 .font(.title)
-                .foregroundColor(game.color(for: theme))
+                .foregroundColor(theme.color)
             Text("All of " + theme.emojis).lineLimit(1)
-            Text("Number of pairs of cards is \(theme.numberOfPairsOfCards)")
+            Text("Card count: \(theme.numberOfPairsOfCards)")
         }
     }
 }
 
-struct ThemeManagerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeManagerView(store: ThemeStore(named: "Default"))
-            .preferredColorScheme(.light)
-    }
-}
+//struct ThemeManagerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ThemeManagerView(store: ThemeStore(named: "Default"))
+//            .preferredColorScheme(.light)
+//    }
+//}
 
 

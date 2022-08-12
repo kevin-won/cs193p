@@ -49,24 +49,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func color(for theme: Theme) -> Color {
-        switch theme.color {
-        case "red":
-           return Color.red
-        case "blue":
-            return Color.blue
-        case "green":
-            return Color.green
-        case "purple":
-            return Color.purple
-        case "yellow":
-            return Color.yellow
-        case "orange":
-            return Color.orange
-        case "pink":
-            return Color.pink
-        default:
-            return Color.white
-        }
+        theme.color
     }
     
     func getScore() -> Int {

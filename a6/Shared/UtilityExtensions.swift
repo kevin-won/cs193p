@@ -249,3 +249,39 @@ extension Array where Element == NSItemProvider {
         loadObjects(ofType: theType, firstOnly: true, using: load)
     }
 }
+
+struct RGBAColor: Codable, Equatable, Hashable {
+    let red: Double
+    let green: Double
+    let blue: Double
+    let alpha: Double
+}
+
+extension Color {
+    init(rgbaColor rgba: RGBAColor) {
+        self.init(.sRGB, red: rgba.red, green: rgba.green, blue: rgba.blue, opacity: rgba.alpha)
+    }
+}
+
+extension Theme {
+    var color: Color {
+        Color(rgbaColor: self.rgbaColor)
+    }
+}
+
+extension RGBAColor {
+    init(color: Color) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        if let cgColor = color.cgColor {
+            UIColor(cgColor: cgColor).getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        }
+        self.init(red: Double(red), green: Double(green), blue: Double(blue), alpha: Double(alpha))
+    }
+    
+    init(_ red: Double, _ green: Double, _ blue: Double, _ alpha: Double) {
+        self.init(red: red/255, green: green/255 , blue: blue/255, alpha: alpha)
+    }
+}

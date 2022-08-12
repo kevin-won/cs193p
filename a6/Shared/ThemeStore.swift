@@ -14,14 +14,14 @@ struct Theme: Identifiable, Codable, Hashable {
     var emojis: String
     var id: Int
     var numberOfPairsOfCards: Int
-    var color: String = "Color"
+    var rgbaColor: RGBAColor
     
-    fileprivate init(name: String, emojis: String, id: Int, numberOfPairsOfCards: Int, color: String) {
+    fileprivate init(name: String, emojis: String, id: Int, numberOfPairsOfCards: Int, rgbaColor: RGBAColor) {
         self.name = name
         self.emojis = emojis
         self.id = id
         self.numberOfPairsOfCards = numberOfPairsOfCards
-        self.color = color
+        self.rgbaColor = rgbaColor
     }
 }
 
@@ -29,50 +29,41 @@ struct Theme: Identifiable, Codable, Hashable {
 
 class ThemeStore: ObservableObject {
     let name: String
-    
-    @Published var themes = [Theme]()
-//    didSet {
-//        storeInUserDefaults()
-//    }
-    
-//    private var userDefaultsKey: String {
-//        "PaletteStore:" + name
-//    }
-//
-//    private func storeInUserDefaults() {
-//        UserDefaults.standard.set(try? JSONEncoder().encode(palettes), forKey: userDefaultsKey)
-////        UserDefaults.standard.set(palettes.map { [$0.name,$0.emojis,String($0.id)] }, forKey: userDefaultsKey)
-//    }
-//
-//    private func restoreFromUserDefaults() {
-//        if let jsonData = UserDefaults.standard.data(forKey: userDefaultsKey),
-//           let decodedPalettes = try? JSONDecoder().decode(Array<Palette>.self, from: jsonData) {
-//            palettes = decodedPalettes
-//        }
-////        if let palettesAsPropertyList = UserDefaults.standard.array(forKey: userDefaultsKey) as? [[String]] {
-////            for paletteAsArray in palettesAsPropertyList {
-////                if paletteAsArray.count == 3, let id = Int(paletteAsArray[2]), !palettes.contains(where: { $0.id == id }) {
-////                    let palette = Palette(name: paletteAsArray[0], emojis: paletteAsArray[1], id: id)
-////                    palettes.append(palette)
-////                }
-////            }
-////        }
-//    }
+            
+    @Published var themes = [Theme]() {
+        didSet {
+            storeInUserDefaults()
+        }
+    }
+
+    private var userDefaultsKey: String {
+        "ThemeStore:" + name
+    }
+
+    private func storeInUserDefaults() {
+        UserDefaults.standard.set(try? JSONEncoder().encode(themes), forKey: userDefaultsKey)
+    }
+
+    private func restoreFromUserDefaults() {
+        if let jsonData = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let decodedThemes = try? JSONDecoder().decode(Array<Theme>.self, from: jsonData) {
+            themes = decodedThemes
+        }
+    }
     
     init(named name: String) {
         self.name = name
-//        restoreFromUserDefaults()
+        restoreFromUserDefaults()
         if themes.isEmpty {
-            insertTheme(named: "Flora", emojis: "🌲🌴🌿☘️🍀🍁🍄🌾💐🌷🌹🥀🌺🌸🌼🌻", color: "green")
-            insertTheme(named: "Weather", emojis: "☀️🌤⛅️🌥☁️🌦🌧⛈🌩🌨❄️💨☔️💧💦🌊☂️🌫🌪", color: "blue")
-            insertTheme(named: "COVID", emojis: "💉🦠😷🤧🤒", color: "pink")
-            insertTheme(named: "Faces", emojis: "😀😃😄😁😆😅😂🤣🥲☺️😊😇🙂🙃😉😌😍🥰😘😗😙😚😋😛😝😜🤪🤨🧐🤓😎🥸🤩🥳😏😞😔😟😕🙁☹️😣😖😫😩🥺😢😭😤😠😡🤯😳🥶😥😓🤗🤔🤭🤫🤥😬🙄😯😧🥱😴🤮😷🤧🤒🤠", color: "orange")
-            insertTheme(named: "Animal Faces", emojis: "🐵🙈🙊🙉🐶🐱🐭🐹🐰🦊🐻🐼🐻‍❄️🐨🐯🦁🐮🐷🐸🐲", color: "purple")
-            insertTheme(named: "Animals", emojis: "🐥🐣🐂🐄🐎🐖🐏🐑🦙🐐🐓🐁🐀🐒🦆🦅🦉🦇🐢🐍🦎🦖🦕🐅🐆🦓🦍🦧🦣🐘🦛🦏🐪🐫🦒🦘🦬🐃🦙🐐🦌🐕🐩🦮🐈🦤🦢🦩🕊🦝🦨🦡🦫🦦🦥🐿🦔", color: "yellow")
-
-            insertTheme(named: "Music", emojis: "🎼🎤🎹🪘🥁🎺🪗🪕🎻", color: "blue")
-            insertTheme(named: "Sports", emojis: "🏈⚾️🏀⚽️🎾🏐🥏🏓⛳️🥅🥌🏂⛷🎳", color: "red")
-            insertTheme(named: "Vehicles", emojis: "🚙🚗🚘🚕🚖🏎🚚🛻🚛🚐🚓🚔🚑🚒🚀✈️🛫🛬🛩🚁🛸🚲🏍🛶⛵️🚤🛥🛳⛴🚢🚂🚝🚅🚆🚊🚉🚇🛺🚜", color: "green")
+            print("Hello")
+            insertTheme(named: "Flora", emojis: "🌲🌴🌿☘️🍀🍁🍄🌾💐🌷🌹🥀🌺🌸🌼🌻", rgbaColor: RGBAColor(255,0,0,1))
+            insertTheme(named: "Weather", emojis: "☀️🌤⛅️🌥☁️🌦🌧⛈🌩🌨❄️💨☔️💧💦🌊☂️🌫🌪", rgbaColor: RGBAColor(0,255,0,1))
+            insertTheme(named: "COVID", emojis: "💉🦠😷🤧🤒", rgbaColor: RGBAColor(0,0,255,1))
+            insertTheme(named: "Faces", emojis: "😀😃😄😁😆😅😂🤣🥲☺️😊😇🙂🙃😉😌😍🥰😘😗😙😚😋😛😝😜🤪🤨🧐🤓😎🥸🤩🥳😏😞😔😟😕🙁☹️😣😖😫😩🥺😢😭😤😠😡🤯😳🥶😥😓🤗🤔🤭🤫🤥😬🙄😯😧🥱😴🤮😷🤧🤒🤠", rgbaColor: RGBAColor(196,96,96,1))
+            insertTheme(named: "Animal Faces", emojis: "🐵🙈🙊🙉🐶🐱🐭🐹🐰🦊🐻🐼🐻‍❄️🐨🐯🦁🐮🐷🐸🐲", rgbaColor: RGBAColor(10,10,10,1))
+            insertTheme(named: "Animals", emojis: "🐥🐣🐂🐄🐎🐖🐏🐑🦙🐐🐓🐁🐀🐒🦆🦅🦉🦇🐢🐍🦎🦖🦕🐅🐆🦓🦍🦧🦣🐘🦛🦏🐪🐫🦒🦘🦬🐃🦙🐐🦌🐕🐩🦮🐈🦤🦢🦩🕊🦝🦨🦡🦫🦦🦥🐿🦔", rgbaColor: RGBAColor(20,196,196,1))
+            insertTheme(named: "Music", emojis: "🎼🎤🎹🪘🥁🎺🪗🪕🎻", rgbaColor: RGBAColor(1,96,255,1))
+            insertTheme(named: "Sports", emojis: "🏈⚾️🏀⚽️🎾🏐🥏🏓⛳️🥅🥌🏂⛷🎳", rgbaColor: RGBAColor(82,9,233,1))
         }
     }
     
@@ -92,9 +83,9 @@ class ThemeStore: ObservableObject {
         return index % themes.count
     }
     
-    func insertTheme(named name: String, emojis: String? = nil, at index: Int = 0, color: String) {
+    func insertTheme(named name: String, emojis: String? = nil, at index: Int = 0, rgbaColor: RGBAColor) {
         let unique = (themes.max(by: { $0.id < $1.id })?.id ?? 0) + 1
-        let theme = Theme(name: name, emojis: emojis ?? "", id: unique, numberOfPairsOfCards: emojis!.count, color: color)
+        let theme = Theme(name: name, emojis: emojis ?? "", id: unique, numberOfPairsOfCards: emojis!.count, rgbaColor: rgbaColor)
         let safeIndex = min(max(index, 0), themes.count)
         themes.insert(theme, at: safeIndex)
     }

@@ -9,27 +9,56 @@ import SwiftUI
 
 struct ThemeEditor: View {
     @Binding var theme: Theme
+    @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
-        Form {
-            nameSection
-            addEmojisSection
-            removeEmojiSection
+        NavigationView {
+            Form {
+                nameSection
+                removeEmojiSection
+                addEmojisSection
+                cardCountSection
+                colorSection
+            }
+            .navigationTitle("Edit \(theme.name)")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Edit \(theme.name)")
-        .frame(minWidth: 300, minHeight: 350)
     }
     
     var nameSection: some View {
-        Section(header: Text("Name")) {
+        Section(header: Text("Theme Name")) {
             TextField("Name", text: $theme.name)
+        }
+    }
+    
+    var removeEmojiSection: some View {
+        Section(header:
+            HStack {
+                Text("Emojis")
+                Spacer()
+                Text("Tap Emoji to Exclude")
+        }) {
+            let emojis = theme.emojis.removingDuplicateCharacters.map { String($0) }
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
+                ForEach(emojis, id: \.self) { emoji in
+                    Text(emoji)
+                        .onTapGesture {
+                            withAnimation {
+                                if theme.emojis.count > 2 {
+                                    theme.emojis.removeAll(where: { String($0) == emoji })
+                                }
+                            }
+                        }
+                }
+            }
+            .font(.system(size: 40))
         }
     }
     
     @State private var emojisToAdd = ""
     
     var addEmojisSection: some View {
-        Section(header: Text("Add Emojis")) {
+        Section(header: Text("Add Emoji")) {
             TextField("", text: $emojisToAdd)
                 .onChange(of: emojisToAdd) { emojis in
                     addEmojis(emojis)
@@ -45,20 +74,45 @@ struct ThemeEditor: View {
         }
     }
     
-    var removeEmojiSection: some View {
-        Section(header: Text("Remove Emoji")) {
-            let emojis = theme.emojis.removingDuplicateCharacters.map { String($0) }
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
-                ForEach(emojis, id: \.self) { emoji in
-                    Text(emoji)
-                        .onTapGesture {
-                            withAnimation {
-                                theme.emojis.removeAll(where: { String($0) == emoji })
-                            }
-                        }
-                }
+    
+    
+    func incrementStep() {
+        if theme.numberOfPairsOfCards < theme.emojis.count {
+            theme.numberOfPairsOfCards += 1
+        }
+    }
+
+    func decrementStep() {
+        if theme.numberOfPairsOfCards > 2 {
+            theme.numberOfPairsOfCards -= 1
+        }
+    }
+    
+    var cardCountSection: some View {
+        Section(header: Text("Card Count")) {
+            Stepper {
+                Text("\(theme.numberOfPairsOfCards) Pairs")
+            } onIncrement: {
+                incrementStep()
+            } onDecrement: {
+                decrementStep()
             }
-            .font(.system(size: 40))
+        }
+    }
+    
+    var color: Binding<Color> {     // << here !!
+        Binding {
+            return Color(rgbaColor: theme.rgbaColor)
+        } set: { newRGBAColor in
+            theme.rgbaColor = RGBAColor(color: newRGBAColor)
+        }
+    }
+        
+    var colorSection: some View {
+        Section(header: Text("Colors")) {
+            VStack {
+                ColorPicker("Selection", selection: self.color)
+            }
         }
     }
 }
